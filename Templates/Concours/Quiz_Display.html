@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load index %}
+{% load latexify %}
+
+
+{% block title %} TEFA: {{ Course.coursename }}: {{ Chapter.chaptertitle }} Tests {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Quiz/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+    <div class="container section">
+
+        <div class="row">
+            <h3 class="center">{{ Course.coursename }}: {{ Chapter.chaptertitle }} Quiz</h3>
+            <div>
+
+                {% latexify context_arg %}
+                {% latexify context_arg parse_math=True %}
+
+                {% latexify 'this is varable c = \pm\sqrt{a^2 + b^2}' math_block=True %}
+            </div>
+            <form action="{% url 'Concours:quizcorrection' user_id=user.id course_id=Course.id chapter_id=Chapter.id %}"
+                  method="POST">{% csrf_token %}
+                <fieldset class="row col s10 offset-s1 grey lighten-3 z-depth-1">
+                    <ol>
+                        {% for question in mcq_questions %}
+                            <li><p>{{ question.question }}: <b>( {{ question.question_marks }} Marks )</b></p>
+                                {% for  answer in mcq_answers|index:forloop.counter0 %}
+                                    <p><input type="checkbox" id="test{{ answer.id }}" name="{{ question.id }}"
+                                              value="{{ answer.id }}" class="black-text"/>
+                                        <label for="test{{ answer.id }}" class="black-text">{{ answer.answer }}</label>
+                                    </p>
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ol>
+                    <div class="col s6 offset-s5">
+                        <button type="submit" class="btn waves-effect waves-light blue-grey accent-4 z-depth-4">Submit
+                        </button>
+                    </div>
+                    <br><br>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

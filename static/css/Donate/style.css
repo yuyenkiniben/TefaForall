@@ -1,0 +1,186 @@
+body{
+    font-family: Arial;
+
+}
+h1, h2, h3, h4, h5, a{
+    font-family: "Times New Roman";
+}
+ul#nav-mobile.side-nav.blue-grey{
+    max-width: 250px;
+}
+
+ul.hide-on-med-and-down{
+    display: block;
+    margin:auto 100px auto 100px;
+    float: left;
+}
+a#logo-container.brand-logo.left{
+    margin-left: 30px;
+}
+
+#idlogo{
+    margin: 0px;
+    padding: 10px 0px 0px 10px ;
+    float: left;
+    clear: left;
+}
+input#search.searchbar{
+    border-radius: 10px;
+    float: left;
+    margin: 10px 10px 10px auto;
+    width: 100px;
+    height: 40px;
+    padding: auto;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 14px;
+}
+#logo-container{
+    clear: both;
+    float: left;
+    margin-left: 2px;
+    margin-right: 40px;
+}
+.logo{
+    padding: 0px 0px 0px 10px ;
+    float: left;
+}
+.foot>ul>li{
+    float: left;
+    display: inline-block;
+    padding: 8px;
+}
+.social{
+    text-align: center;
+}
+.gfti{
+    margin-left: 100px;
+    display: block;
+    float: left;
+    width: 500px;
+}
+.gfti>ul>li{
+    display: inline-block;
+    margin: 0px 20px 0px 20px;
+}
+#nav-mobile{
+    background-color: #9e9e9e;
+    font-family: "Courier New", Courier, monospace;
+}
+#nav-mobile>li{
+    text-align: center;
+}
+fieldset{
+    padding: 20px;
+}
+fieldset legend{
+    margin: auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+span.name{
+    clear: left;
+}
+div.card-image img{
+    height: 100%;
+    width: 100%;
+}
+img.circle{
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+}
+div.center.z-depth-2{
+    margin: auto 20%;
+    padding: 5px;
+}
+div.col.s12.m6.l6{
+    padding: 5px;
+    margin: auto;
+}
+
+/*change color of form on input*/
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=text].valid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+
+/* label focus color */
+.input-field input[type=email]:focus + label {
+    color: #000;
+}
+/* label focus color */
+.input-field input[type=email]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=email].valid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=email].invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+/* label focus color */
+.input-field input[type=password]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=password].valid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=password].invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+/* label focus color */
+.input-field input[type=radio]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+.input-field input[type=radio]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+ul.dropdown-content.select-dropdown li span {
+    color: #000;
+}
+
+/*change color of form on input radio button*/
+[type="radio"].with-gap:checked+label:before,
+[type="radio"].with-gap:checked+label:after {
+    border: 2px solid darkslategray !important;
+}
+
+[type="radio"].with-gap:checked+label:after {
+    background-color: darkslategray !important;
+}

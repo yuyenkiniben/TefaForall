@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load ratings %}
+
+
+{% block title %} TEFA: Concours Commercial Courses{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Concours/Commercialcourses/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+    <div class="section container ">
+    <div class=" black-text">
+        <h2> Commercial Concours </h2>
+    </div>
+    <div class="row">
+        {% for concour in allcommercial %}
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:commercialcourses' school_id=concour.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ concour.schoollogo.url }}" height="250">
+                            <span class="card-title black-text "></span>
+                            </div>
+                        <div class="card-action">
+                            <h5 class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{ concour.schoolname }}">{{ concour.schoolname|truncatechars:20 }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="row ">
+        <div class="pagination center">
+            <span class="step-links">
+                {% if allcommercial.has_previous  %}
+                    <a href="?page={{ allcommercial.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ allcommercial.number}} of {{ allcommercial.paginator.num_pages}}
+                </span>
+                {% if allcommercial.has_next  %}
+                    <a href="?page={{ allcommercial.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+{%  endblock content %}

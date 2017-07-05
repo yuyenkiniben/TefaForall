@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block style %} <link href="{% static 'css/Homepage/EditProfilepic/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/> {% endblock style%}
+{% block title %} {{ Title }} {% endblock title %}
+
+{% block content %}
+
+<div class="section container ">
+
+    <div class=" row">
+        <div class="col s12">
+
+            <form  action="{%  url 'homepg:editprofilepic' user_id=user.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <fieldset class="white z-depth-2">
+                <p class="center">{{ Message }}</p>
+                    {% if user.userprofile.userpic %}
+                        <div class="row center rounded">
+                            <img src="{{ user.userprofile.userpic.url }}" class="responsive-img " width="200" height="300">
+                        </div>
+                    {% else %}
+                        <div class="row center rounded">
+                            <h4><i class="fa fa-user-circle-o fa-4x prefix grey-text center"></i></h4>
+                        </div>
+                    {% endif %}
+                    <div class="file-field input-field">
+                      <div class="btn blue-grey">
+                        <span>Choose Profile picture</span>
+                        <input type="file"  name="image">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+                    <div class="row center">
+                        <button class="btn waves-effect blue-grey lighten-1 center" type="submit" name="action">Update Profile Picture
+                        </button>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

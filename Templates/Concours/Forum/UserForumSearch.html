@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load ratings %}
+{% block title %} TEFA: {{ UserComment.course.coursename}}: Comment search{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Homepage/Contact_Us/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+    <div class="container section center">
+    <br><br><br><br><br><br>
+    <div class="row ">
+        <fieldset class="z-depth-1 col s8 offset-s2">
+        {% if searchtopics %}
+            <h4>Your search topic <b class="grey-text">{{ searchString }}</b> had {{ countsearchtopics }} results</h4>
+            {% for topic in searchtopics %}
+                <a href="{% url 'Concours:userforum' user_id=user.id Usercomment_id=topic.id course_id=course_id %}"><h5 class="">Goto <b><u>{{ topic }}</u></b> Topic of Discussion</h5></a>
+                <br>
+            {% endfor %}
+        {% else %}
+            <h4>Your search topic <b class="grey-text">{{ searchString }}</b> had 0 results</h4>
+        {% endif %}
+        </fieldset>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} TEFA: Donate {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Donate/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+<br><br>
+<div class="section container ">
+
+    <div class=" row ">
+            <p class="row"> <b class="col offset-s1"></b>For Transfers use the phone and account numbers For Transfers use the phone and account numbers
+            For Transfers use the phone and account numbers For Transfers use the phone and account numbers
+            For Transfers use the phone and account numbers For Transfers use the phone and account numbers </p>
+        <div class="col s12 m8 l6 offset-l3 offset-m2 ">
+            <!-- Look for the method to use mobile money for payments online -->
+            <form  action="{% url 'homepg:donatemomo' %}" method="post" >{% csrf_token %}
+                <fieldset class="white z-depth-2">
+                    <legend class="blue-grey lighten-1 white-text center"><h4> Donate: </h4> </legend>
+                            <p class="black-text center"><b> Via MTN Mobile Money </b></p>
+
+                {% if messages %}
+                    <ul class="messagelist">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}><h5>{{ message }}</h5></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                       <div class="input-field col s10 ">
+                            <i class="fa fa-user fa-2x prefix black-text "></i>
+                           <label for="contact" class="active">Phone Number: </label>
+                            <input placeholder="Enter Contact Used For Transcation" id="contact" type="text" class="validate" name="phonenumber" required>
+                        </div>
+                        <div class="input-field col s10 ">
+                            <i class="fa fa-user fa-2x prefix black-text "></i>
+                           <label for="email" class="active">Email: </label>
+                            <input placeholder="Please enter your email" id="email" type="text" class="validate" name="email" required>
+                        </div>
+                        <div class="input-field black-text col s10 ">
+                            <i class="fa fa-money fa-2x prefix black-text"></i>
+                            <input type="text" id="amount" name="amount"/>
+                            <label for="amount" class="black-text"> Amount:</label>
+                        </div>
+                        <div class="col s11 ">
+                            <i class="fa fa-edit fa-2x"></i>
+                            <label for="comment" class="black-text">Comment: </label>
+                            <textarea id="comment" CLASS="white col s10 offset-s1" name="comment" placeholder="Enter Your Comments Here" ></textarea>
+                        </div>
+                    <div class="right row col s10 "> <br>
+                        <img src="{% static 'Img/mobilemoney.jpg' %}" class="responsive-img" >
+                        <button class="btn waves-effect blue-grey lighten-1 center" type="submit" name="action" style="position: absolute; margin: 5px 10px"> Donate
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

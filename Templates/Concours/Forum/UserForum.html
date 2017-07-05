@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load ratings %}
+
+
+{% block title %}TEFA: {{ UserComment.course.coursename}}: {{ UserComment.comment_title}} Forum {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Forum/Style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+<div class="container section  ">
+    <div class="center">
+    <br>
+    {% if messages %}
+        <ul class="messagelist">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}><h5>{{ message }}</h5></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br>
+        <h4><u>Forum for {{ Course.course.coursename }}: {{ UserComment.comment_title}} <small class="blue-grey-text"> Created by: {{ user.username }}</small></u></h4>
+                <p class="col offset-s1"> jhslk aiodohlkdni dine idhlnlai dianlaiodohlkdni dine idhl
+                    aiodohlkdni dine idhlnlai dianl nlai dianlaiodohlkdni dine idhlnlai dianl </p>
+    </div>
+
+
+    <div class="row">
+    <br>
+            <div class="col s12 m4 l4 ">
+                <div class="search_posts grey lighten-4">
+                <br>
+                    <h5 class="center"> Frequently Discussed Topics</h5>
+                    <form action="{% url 'Concours:usersearchforum' course_id=course_id %}" method="get">
+                        <div class="row">
+                            <div class="input-field ">
+                              <input id="searchcomment" type="search" class="col s6 offset-s1 validate" placeholder="Search post" name="q">
+                              <label for="searchcomment"></label><br>
+                                <button type="submit" class="col s2 offset-s1 z-depth-1 ">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    {% if searchtopics %}
+                        {% for comment in searchtopics %}
+                            <div class="">
+                                <a href="" class="black-text">{{ comment.comment_title }}</a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                        <hr class="z-depth-1">
+                        <br>
+                        <ul class="container">
+                         {% for comment in Comments %}
+                              <li class="center ">
+                                <a class="black-text collapsible-header" href="{% url 'Concours:userforum' user_id=user.id course_id=comment.course.id Usercomment_id=comment.id  %}"><b> {{ comment.comment_title }}</b></a>
+                              </li>
+                        {% endfor %}
+                        </ul>
+                    <br>
+                </div>
+            <br> <br>
+            </div>
+
+        <div class="col s12 m8 l8 ">
+            <fieldset class=" z-depth-1 grey lighten-4">
+                <div class="grey-text text-darken-2 row">
+                <div class="comment row">
+                        <br>
+                        <div class="col s4 ">
+                         {% if UserComment.user.userprofile.userpic %}
+                        <div class="row right">
+                            <img src="{{ UserComment.user.userprofile.userpic.url }}" class="right comment " alt="profile picture">
+                        </div>
+                        {% else %}
+                        <div class="row col offset-s7">
+                            <i class="fa fa-user fa-4x prefix grey-text center"></i>
+                        </div>
+                    {% endif %}
+                    </div>
+                        <div class="col s8">
+                       <h5 class="blue-grey-text ">{{ UserComment.user.username|capfirst }} <small class="grey-text text-darken-2">{{ UserComment.timecreated }}</small></h5>
+                        <p>
+                        Content:
+                            {{ UserComment.comment }}<br>
+                        </p><hr class="z-depth-1"><div class="container">{% ratings UserComment %}</div>
+                    <br>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col s10 offset-s1">
+                        <div class="col s4">
+                        {% if user.userprofile.userpic %}
+                            <div class="row right ">
+                                <img src="{{ user.userprofile.userpic.url }}" class="right reply" alt="profile picture">
+                            </div>
+                         {% else %}
+                             <div class="row col offset-s7">
+                                 <i class="fa fa-user fa-4x prefix grey-text "></i>
+                             </div>
+                         {% endif %}
+                        </div>
+                        <div class="col s8 ">
+                            <form action="{% url 'Concours:userreplycomment' user_id=user.id Usercomment_id=UserComment.id %}" method="post" > {% csrf_token %}
+                                <label for="reply" class="black-text">Reply: </label>
+                                <textarea id="reply" CLASS="white" name="usercomment_reply" placeholder="Enter Your Reply To Comment Here" ></textarea>
+                                <button type="submit" class=" right btn waves-effect waves-light blue-grey accent-4 z-depth-4">Reply</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% for reply in Replies %}
+                <div class="section">
+                    <div class="reply row col s10 offset-s1">
+                        <br>
+                        <div class="col s4 ">
+                         {% if reply.user.userprofile.userpic %}
+                        <div class="row right">
+                            <img src="{{ reply.user.userprofile.userpic.url }}" class="right reply " alt="profile picture">
+                        </div>
+                        {% else %}
+                        <div class="row col offset-s7">
+                            <i class="fa fa-user fa-4x prefix grey-text center"></i>
+                        </div>
+                    {% endif %}
+                    </div>
+                        <div class="col s8">
+                       <h5 class="blue-grey-text ">{{ reply.user.username|capfirst }} <small class="grey-text text-darken-2">{{ reply.timecreated }}</small></h5>
+                        <p>
+                        Content:
+                            {{ reply.usercomment_reply }}<br>
+                        </p>
+                            <hr class="z-depth-1">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+{% endblock %}

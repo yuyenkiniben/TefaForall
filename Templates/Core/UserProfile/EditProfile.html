@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block style %} <link href="{% static 'css/Homepage/EditProfile/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/> {% endblock style%}
+{% block title %} TEFA: Editing Profile {% endblock title %}
+
+{% block content %}
+
+<div class="section container ">
+
+    <div class=" row">
+        <div class="col s12">
+
+            <form  action="{%  url 'homepg:editprofile' user_id=user.id %}" method="post" >{% csrf_token %}
+                <fieldset class="white z-depth-2" style="padding-left: 20px">
+                    <legend class="blue-grey lighten-1 white-text center"><h3> Update Profile: </h3> </legend>
+
+                {% if messages %}
+                    <ul class="messagelist">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}><h5>{{ message }}</h5></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                    <p class="black-text center ">{{ Message}}</p>
+                        <div class="input-field col s12 m5 left">
+                            <i class="fa fa-user fa-2x prefix grey-text "></i>
+                            <input value="{{user.first_name}}" id="first_name" type="text" class="validate" name="first_name" required>
+                            <label for="first_name" class="active">First Name</label>
+                        </div>
+                        <div class="input-field col s12 m5 right">
+                            <i class="fa fa-user fa-2x prefix grey-text"></i>
+                            <input value="{{user.last_name}}" id="last_name" type="text" class="validate" name="last_name" required>
+                            <label for="last_name" class="active">Last Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-user-circle-o fa-2x prefix grey-text "></i>
+                            <input value="{{user.username}}" id="user_name" type="text" class="validate" name="username" required>
+                            <label for="user_name" class="active">User Name</label>
+                        </div>
+                        <div class="input-field col s12 ">
+                            <i class="fa fa-lock fa-2x prefix grey-text"></i>
+                            <input id="password" type="password" class="validate" name="password" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-envelope fa-2x prefix grey-text"></i>
+                            <input value="{{user.email}}" id="email" type="email" class="validate" name="email" required>
+                            <label for="email" data-error="wrong" data-success="right" class="active">Email</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m5">
+                                <i class="fa fa-phone fa-2x prefix grey-text "></i>
+                                <input value="{{user.userprofile.contact}}" id="contact" type="text" class="validate" name="contact" required>
+                                <label for="contact" class="active">Contact</label>
+                            </div>
+                            <div class="input-field col s12 m5 right">
+                                <i class="fa fa-calendar fa-2x prefix grey-text"></i>
+                                <label class="active" for="date" >Date of Birth</label>
+                                <input value="{{user.userprofile.dateofbirth}}" type="date" class="datepicker"  id="date" name="dateofbirth" required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m5">
+                                <i class="fa fa-flag fa-2x prefix grey-text "></i>
+                                <input value="{{user.userprofile.nationality}}" id="nationality" type="text" class="validate" name="nationality" required>
+                                <label for="nationality" class="active">Nationality</label>
+                            </div>
+                            <div class="input-field col s12 m5 right">
+                                <i class="fa fa-mars-stroke  fa-2x prefix grey-text"></i>
+                                <label for="gender" class="active"> Gender: </label>
+                                <div id="gender">
+                                    <p>
+                                        <input class="with-gap" name="gender" type="radio" id="female" value="F" />
+                                        <label for="female">Female</label>
+                                        <input class="with-gap" name="gender" type="radio" id="male" value="M" checked />
+                                        <label for="male">Male</label>
+                                        <input class="with-gap" name="gender" type="radio" id="other" value="O" />
+                                        <label for="other">Other</label>
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <p class="grey-text text-darken-3"><b>Highest Level of Education</b></p>
+                        <p>
+                          <input class="with-gap" name="levelofeducation" type="radio" id="test1" value="University" />
+                          <label for="test1">University</label>
+
+                          <input class="with-gap" name="levelofeducation" type="radio" id="test2" value="High School" />
+                          <label for="test2">High School</label>
+
+                          <input class="with-gap" name="levelofeducation" type="radio" id="test3" value="Secondary School" />
+                          <label for="test3">Secondary School</label>
+                        </p>
+                    </div>
+                    <div class="row center">
+                        <button class="btn waves-effect blue-grey lighten-1 center" type="submit" name="action">Update Profile
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} {{ Title }} {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Homepage/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+<!-- Here is the information on the Partners-->
+        <div class="slider " >
+        <ul class="slides">
+            <li>
+                <img src="{% static 'Img/img01.jpg' %}" >
+                <div class="row caption center-align "><br><br><br>
+                    <h4 class="white-text">{{ user.username|capfirst }} Welcome To Targeted Education For All</h4>
+                    <h5 class=" white-text">Free Online courses for Concours in Cameroon</h5>
+                    <p class="transparent-text">
+                    {% if  request.user.is_authenticated  %}
+                         <a href="{% url 'homepg:logout' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Log out </a>
+                    {% else %}
+                    <a href="{% url 'account_login' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">LogIn</a>
+                        .
+                    <a href="{% url 'account_signup' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Register</a>
+                    {% endif %}
+                    </p>
+                </div>
+            </li>
+            <li>
+            <img src="{% static 'Img/img02.jpg' %}">
+                <div class="row caption center-align"><br><br><br>
+                    <h4 class="white-text">{{ user.username|capfirst }} Welcome To Targeted Education For All</h4>
+                    <h5 class=" white-text">Free Online courses for Concours in Cameroon</h5>
+                    <p class="transparent-text">
+                    {% if  request.user.is_authenticated  %}
+                         <a href="{% url 'homepg:logout' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Log out </a>
+                    {% else %}
+                    <a href="{% url 'account_login' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">LogIn</a>
+                        .
+                    <a href="{% url 'account_signup' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Register</a>
+                    {% endif %}
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="{% static 'Img/img03.jpg' %}">
+                <div class="row caption center-align"><br><br><br>
+                    <h4 class="white-text">{{ user.username|capfirst }} Welcome To Targeted Education For All</h4>
+                    <h5 class=" white-text">Free Online courses for Concours in Cameroon</h5>
+                    <p class="transparent-text">
+                    {% if  request.user.is_authenticated  %}
+                         <a href="{% url 'homepg:logout' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Log out </a>
+                    {% else %}
+                    <a href="{% url 'account_login' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">LogIn</a>
+                        .
+                    <a href="{% url 'account_signup' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Register</a>
+                    {% endif %}
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="{% static 'Img/img04.jpg' %}">
+                <div class="row caption center-align"><br><br><br>
+                    <h4 class="white-text">{{ user.username|capfirst }} Welcome To Targeted Education For All</h4>
+                    <h5 class=" white-text">Free Online courses for Concours in Cameroon</h5>
+                    <p class="transparent-text">
+                    {% if  request.user.is_authenticated  %}
+                         <a href="{% url 'homepg:logout' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Log out </a>
+                    {% else %}
+                    <a href="{% url 'account_login' %}" class="btn  waves-effect waves-light blue-grey z-depth-4">LogIn</a>
+                        .
+                    <a href="{% url 'account_signup' %}" class="btn waves-effect waves-light blue-grey  z-depth-4">Register</a>
+                    {% endif %}
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container section">
+        <!--   Icon Section  with info on partner -->
+        <div class="row center">
+            <div class="col s6 m4 l3">
+                <div class="icon-block">
+                    <div>
+                        <img src="" alt="" class="partner_logo"/>
+                    </div>
+                    <p class="light"> For All</p>
+                </div>
+            </div>
+            <!--   Icon Section  with info on partner -->
+            <div class="col s6 m4 l3">
+                <div class="icon-block">
+                    <div>
+                        <img src="{% static 'Img/Webshinobislogo.jpg' %}" alt="Webshinobis logo" height="200" width="200"/>
+                    </div>
+                </div>
+            </div>
+
+            <!--   Icon Section  with info on partner -->
+            <div class="col s6 m4 l3">
+                <div class="icon-block">
+                    <div>
+                        <img src="{% static 'Img/Aspy logo.jpg' %}" alt="Aspy Logo" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section"  >
+        <h3 class="center col s12 blue-grey-text text-darken-4"><b> Navigating TEFA</b></h3>
+        <!--   Here we have video on navigation -->
+        <div class="row ">
+            <div class="col s12 ">
+                <div class="col s12 m7 l7 icon-block">
+                    <br>
+                    <video id="my-player" class="video-js vjs-default-skin responsive-video col s12" preload="auto" width="480" height="300"
+                      poster="{% static 'Img/WP_20160822_07_29_01_Pro.jpg' %}" data-setup='{"controls":true}' >
+                      <source label='SD' res='360' src="{% static "Video/FRANK EDWARDS OKAKA - YouTube.MP4" %}" type='video/mp4'>
+                      <p class="vjs-no-js">Javascript is disabled or not supported</p>
+                    </video>
+                </div>
+            <div class="icon-block col s12 m5 l5">
+                <p class="row" style="padding-left: 20px ">A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate
+                    the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website A video on how to navigate the TEFA website </p>
+            </div>
+        </div>
+    </div>
+
+        <h3 class="center col s12 blue-grey-text text-darken-4"><b> Locate Us</b></h3>
+        <!--   Here we have google map navigation -->
+        <div class="row">
+        <div class="col s12 m8">
+
+    <!-- Script for google map from https://developers.google.com/maps/documentation/javascript/adding-a-google-map and incase of problems consult https://developers.google.com/maps/documentation/javascript/geocoding#GetStarted-->
+            <br>
+                <div class="video-container">
+                    <div id="map"></div>
+                    <script>
+                      function initMap() {
+                        var uluru = {lat: 3.873610, lng: 11.503555};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                          zoom: 15,
+                          center: uluru
+                        });
+                        var marker = new google.maps.Marker({
+                          position: uluru,
+                          map: map
+                        });
+                      }
+                    </script>
+                </div>
+            </div>
+        <div class="col s12 m4">
+            <div class="center icon-block">
+                <ul>
+                <li><i class="fa fa-map-marker fa-4x blue-grey-text text-darken-4"></i>
+                    <p><b> Ecole Publique Messa, Yaounde </b></p>
+                </li>
+                    <li><i class="fa fa-phone fa-4x blue-grey-text text-darken-4"></i></li>
+                        <li><b>Telephone</b></li>
+                    <li><p class="row"> <b><i class="fa fa-arrow-right"></i> +237652633023 </b> </p><li>
+                    <li><p> <b><i class="fa fa-arrow-right"></i> +237690738859 </b> </p></li>
+                    <li><p> <b><i class="fa fa-arrow-right"></i> +237678113152 </b> </p></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    </div >
+    </div>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP-oVszk5-AyAQbkrR-l-syL7UxH5bhkk&callback=initMap">
+    </script>
+{% endblock content %}

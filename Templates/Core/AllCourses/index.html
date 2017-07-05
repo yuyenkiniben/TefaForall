@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load ratings %}
+
+{% block title %} TEFA: All Courses {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'CSS/Secondary_School/Artscourses/Style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+    <div class="section container ">
+    <div class=" black-text">
+        <h2><u>University </u> </h2>
+    </div>
+
+    <div class="row">
+        {% for course in universitycourses %}
+            {% ifequal course.departement.id 1 %}  <!-- hence Arts Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'University:selectedartscourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 2 %}  <!-- hence Science Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'University:selectedsciencecourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 3 %}  <!-- hence Commercial Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'University:selectedcommercialcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 4 %}  <!-- hence Engineering Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'University:selectedengineeringcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 5 %}  <!-- hence Medical Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'University:selectedmedicalcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+        {% endfor %}
+    </div>
+    <a href="{% url 'University:allcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+    <div class=" black-text">
+        <h2><u>Concours </u></h2>
+    </div>
+        <div class="row">
+        {% for course in universityconcourcourses %}
+            {% ifequal course.departement.id 1 %}  <!-- hence Arts Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedartscourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 2 %}  <!-- hence Science Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedsciencecourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 3 %}  <!-- hence Commercial Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedcommercialcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 4 %}  <!-- hence Engineering Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedengineeringcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 5 %}  <!-- hence Medical Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedmedicalcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+        {% endfor %}
+
+    </div>
+    <a href="{% url 'Concours:allcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+    <div class=" black-text">
+        <h2><u>High School</u></h2>
+    </div>
+    <div class="row">
+        {% for course in highcourses %}
+            {% ifequal course.departement.id 1 %}  <!-- hence Arts Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'High:selectedartscourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 2 %}  <!-- hence Science Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'High:selectedsciencecourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 3 %}  <!-- hence Commercial Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'High:selectedcommercialcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+        {% endfor %}
+    </div>
+    <a href="{% url 'High:allcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+
+    <div class=" black-text">
+        <h2><u>Secondary School</u> </h2>
+    </div>
+    <div class="row">
+        {% for course in secondarycourses %}
+            {% ifequal course.departement.id 1 %}  <!-- hence Arts Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'secondary:selectedartscourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 2 %}  <!-- hence Science Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'secondary:selectedsciencecourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+            {% endifequal %}
+            {% ifequal course.departement.id 3 %}  <!-- hence Commercial Course -->
+            <div class="col s6 m4 l3">
+                <a href="{% url 'secondary:selectedcommercialcourse' course_id=course.id %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card center">
+                            <div class="card-image">
+                                <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                            <div class="card-action">
+                                <h5>{{ course.coursename }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endifequal %}
+        {% endfor %}
+    </div>
+    <a href="{% url 'secondary:allcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+</div>
+{% endblock content %}

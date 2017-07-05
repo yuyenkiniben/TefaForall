@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load ratings %}
+
+
+{% block title %} TEFA: Concours Arts Courses{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Concours/Artscourses/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+    <div class="section container ">
+    <div class=" black-text">
+        <h2> {{ concour.schoolname|capfirst }} Courses </h2>
+    </div>
+    <div class="row">
+
+        {% for course in allarts %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'Concours:selectedartscourse' course_id=course.coursename.id user_id=user.id school_id=concour.id %}" class="center black-text">
+                {% else %}
+                    <a href="{% url 'Concours:selectedartscourse' course_id=course.coursename.id user_id=0 school_id=concour.id %}" class="center black-text">
+                 {% endif %}
+            <div class="col s6 m4 l3">
+                <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ course.coursename.courselogo.url }}" height="250">
+                            <span class="card-title black-text "></span>
+                            </div> {% ratings course %}
+                        <div class="card-action">
+                            <h5 class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{ course.coursename }}">{{ course.coursename|truncatechars:20 }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+
+    <div class="row ">
+        <div class="pagination center">
+            <span class="step-links">
+                {% if allarts.has_previous  %}
+                    <a href="?page={{ allarts.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ allarts.number}} of {{ allarts.paginator.num_pages}}
+                </span>
+                {% if allarts.has_next  %}
+                    <a href="?page={{ allarts.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+{%  endblock content %}

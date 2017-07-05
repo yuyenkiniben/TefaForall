@@ -1,0 +1,12 @@
+img.circle{
+    margin-left: 80px;
+    float: left;
+}
+span.name{
+    clear: left;
+}
+.icon{
+    width: 20%;
+    padding: 5px;
+    text-align: center;
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block style %} <link href="{% static 'css/Homepage/UserProfile/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/> {% endblock style%}
+{% block title %} TEFA: {{ user.username|capfirst }} Profile{% endblock title %}
+
+{% block content %}
+
+<div class="section container ">
+
+    <div class="row">
+        {% if user.userprofile.userpic %}
+            <div class="col s12 m4 l3 center">
+                <img src="{{ user.userprofile.userpic.url }}" class="responsive-img rounded col s12 m12" width="200" height="300">
+                <a href="{% url 'homepg:editprofilepic' user_id=user.id %}" class="right">
+                <br> <button class="btn waves-effect blue-grey lighten-1 center" >Edit Profile</button></a>
+            </div>
+        {% else %}
+            <div class="col s12 m4 l3 center">
+                <h4><i class="fa fa-user-circle-o fa-4x prefix grey-text center "></i></h4>
+                <a href="{% url 'homepg:editprofilepic' user_id=user.id %}" class="center">
+                    <br>
+                    <button class="btn waves-effect blue-grey lighten-1 center" >Edit Profile</button></a>
+            </div>
+        {% endif %}
+
+            <div class="col s11 m7 l8 offset-s1 ">
+                <div>
+                {% if messages %}
+                    <ul class="messagelist">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}><h5>{{ message }}</h5></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                    <p class="black-text center">{{ Message}}</p>
+
+                    <h5 class="grey-text text-darken-3 center ">Contact Information</h5>
+                        <p class="grey-text text-darken-2"> Contact: {{user.userprofile.contact}}</p>
+
+                        <p class="grey-text text-darken-2">Email: {{user.email}}</p>
+                </div>
+                <div>
+                    <h5 class="grey-text text-darken-3 center ">General Information</h5>
+
+                        <p class="grey-text text-darken-2"> First Name: {{user.first_name}}</p>
+
+                        <p class="grey-text text-darken-2"> Last Name: {{user.last_name}}</p>
+
+                        <p class="grey-text text-darken-2"> User Name: {{user.username}}</p>
+
+                        <p class="grey-text text-darken-2"> Gender: {{user.userprofile.gender}}</p>
+
+                        <p class="grey-text text-darken-2"> Date of Birth: {{user.userprofile.dateofbirth}}</p>
+
+                        <p class="grey-text text-darken-2"> Nationality: {{user.userprofile.nationality}}</p>
+
+                        <p class="grey-text text-darken-2">Highest Level Of Education: {{user.userprofile.levelofeducation}}</p>
+                    <a href="{% url 'homepg:editprofile' user_id=user.id %}" class="row col s6 offset-s1 center"><button class="btn waves-effect blue-grey lighten-1 center" >Edit Profile</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

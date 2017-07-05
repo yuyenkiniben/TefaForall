@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block style %} <link href="{% static 'css/Core/Mobile_Money/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/> {% endblock style%}
+{% block title %} TEFA: Subscription Payment {% endblock title %}
+
+{% block content %}
+
+<div class="section container ">
+<br><br><br>
+    <div class=" row">
+        <div class="col s6 offset-s2">
+
+            <form  method="POST" action="{% url 'Concours:subscribe' course_id=course_id user_id=user_id school_id=school_id %}"  >{% csrf_token %}
+                <fieldset class="white z-depth-2">
+                    <legend class="blue-grey lighten-1 white-text center"><h4> Course Subscription: </h4> </legend>
+                            <p class="black-text center"><b>This Course will cost you 1000 FCFA Via MTN Mobile Money Cameroon</b></p>
+
+                {% if messages %}
+                    <ul class="messagelist">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}><h5>{{ message }}</h5></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                     <div class="black-text col s10 ">
+                            <input type="hidden" id="amount" name="amount" value="1000"/>
+                        </div><br>
+                       <div class="input-field col s10 ">
+                            <i class="fa fa-user fa-2x prefix grey-text "></i>
+                           <label for="contact" class="active">Phone Number: </label>
+                            <input placeholder="Enter Contact Used in Transaction" id="contact" type="text" class="validate" name="contact" required>
+                        </div>
+                    <div class="right row col s10 "> <br>
+                        <img src="{% static 'Img/mobilemoney.jpg' %}" class="responsive-img" >
+                        <button class="btn waves-effect blue-grey lighten-1 center" type="submit" name="action" style="position: fixed; margin: 5px 10px">Subscribe
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

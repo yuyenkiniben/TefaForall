@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} TEFA: Concours {{ course.coursename }} Info{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Courseintro/Style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+<div class="navbar-fixed-top" style="position: fixed; width: 100%; top: 0; z-index: 9" >
+    <nav class=" blue-grey lighten-1" role="navigation">
+        <div class=" nav-wrapper col s12 right" style="padding-right: 10px">
+                {% if user.is_authenticated %}
+                    {% if subscribed %}
+                        <a href="{% url 'Concours:coursevideos' course_id=course.id chapter_id=1 topic_id=1 %}" class="blue-grey darken-2 waves-effect waves-light  white-text" style="padding: 0px 20px"><b>Goto Course</b></a>
+                    {% else %}
+                        <a href="{% url 'Concours:subscribe' course_id=course.id user_id=user.id school_id=concour.id %}" class="blue-grey darken-2 waves-effect waves-light white-text" style="padding: 0px 20px"><b>
+                            Subscribe For Course</b></a>
+                    {% endif %}
+
+                {% else %}
+                    <a href="{% url 'account_login' %}" id="coursesubscribe" class="waves-effect waves-light white-text blue-grey darken-2" style="padding: 0px 20px"><b>Sign In to take course</b></a>
+                {% endif %}
+        </div>
+    </nav>
+</div>
+
+<div class="container section"  style="z-index: -1">
+        <div class="row">
+            <div class="row">
+                <h3><u> Concour {{ concour.schoolname }}  </u></h3>
+                <h3 class="center "><u>{{ course.coursename }} Course</u></h3>
+            </div>
+            {% for teacher in teachers %}
+          <div class="row center col s10 offset-s1">
+            <div class="col s12 m6">
+                <div class="card horizontal">
+                    <div class="card-image" style="height: 200px">
+                        <img src="{{ course.courselogo.url }}" class="responsive-img " style="width: 80%">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h5 class=""><b> Course Info:</b></h5><br>
+                            <p><b>Begins: {{ course.coursestart }}</b></p>
+                            <p><b>Ends: {{ course.courseend }}</b></p>
+                        </div>
+                        <div class="card-action">
+                            <a  class="black-text"><b>By: {{ teacher.teachername }} </b> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          </div>
+            {% endfor %}
+        <br>
+        <br>
+        <h3 class="black-text center"><u> Course Introduction</u></h3>
+    <div class="row col s11 offset-s1">
+        <div class="icon-block col s12 m7 l7 ">
+              <br>
+              <video id="main_video" class="video-js vjs-default-skin responsive-video col s12" controls  preload="auto" poster="{{ course.coursevideoposter.url }}" width="480" height="300" data-setup='{}' >
+                  <source src="{{ course.courseintrovideo.url }}" type='video/mp4' label='360' res='480' >
+                  <p class="vjs-no-js">Javascript is disabled or not supported</p>
+              </video>
+        </div>
+        <div class="col s12 m3 l3 icon-block center" >
+            <p class="row"><b class="col offset-s1"></b>{{ course.courseintro }}</p>
+        </div>
+    </div>
+  </div>
+</div>
+ {% endblock content %}

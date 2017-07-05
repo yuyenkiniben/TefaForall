@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load index %}
+
+
+{% block title %} TEFA: {{ Course.coursename }}: {{ Chapter.chaptertitle }} Quiz {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Quiz/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+    <div class="container section">
+        <div class="row center">
+            <h3>{{ Course.coursename }}: {{ Chapter.chaptertitle }} </h3>
+            <p class="">{{ user.username|capfirst }}, an error occurred please try again later. Go back to <a href="{% url 'secondary:coursevideos' course_id=Course.id chap_id=Chapter.id topic_id=1%}">video course</a></p>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+fieldset{
+    margin: 0;
+    border: 0
+}
+
+img.comment{
+    height: 120px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+img.reply{
+    height: 100px;
+    width: 80px;
+    border-radius: 5px;
+}

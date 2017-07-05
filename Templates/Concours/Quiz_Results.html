@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load index %}
+
+
+{% block title %} TEFA: {{ Course.coursename }}: {{ Chapter.chaptertitle }} Results{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Quiz/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+    <div class="container section">
+        <div class="row center">
+            <h3>{{ Course.coursename }}: {{ Chapter.chaptertitle }} </h3>
+            {% if messages %}
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="center {{ message.tags }} red-text" {% endif %}>{{ message }}</p>
+                    {% endfor %}
+            {% endif %}
+                <br>
+                <p class="">{{ user.username|capfirst }}, you scored <b class="green-text">{{ User_Score }} of 100 </b> points for this quiz. Goto <a href="{% url 'secondary:coursevideos' course_id=Course.id chapter_id=Chapter.id topic_id=1 %}">video course</a></p>
+
+        </div>
+    </div>
+{% endblock %}

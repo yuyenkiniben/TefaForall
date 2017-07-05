@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load index %}
+
+{% block title %} TEFA: New topic on Forum {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Forum/Style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+<div class="container section  ">
+    <div class="grey-text text-darken-2 row">
+        <br>
+    <fieldset class="z-depth-1 container">
+    <br><br>
+        <div class="col s3 ">
+        {% if user.userprofile.userpic %}
+            <div class="row right ">
+                <img src="{{ user.userprofile.userpic.url }}" class="right comment" alt="profile picture">
+            </div>
+         {% else %}
+             <div class="row col offset-s7">
+                 <i class="fa fa-user fa-4x prefix grey-text "></i>
+             </div>
+         {% endif %}
+        </div>
+        <div class="col s8 ">
+            <form action="{% url 'Concours:useraddcomment' user_id=user.id course_id=course_id %}" method="post" > {% csrf_token %}
+                <div class="col s12">
+                    <label for="comment_title" class="black-text"> Comment Title: </label>
+                    <input id="comment_title" type="text" name="comment_title" placeholder="Comment Title" required >
+                </div>
+                <div class="col s12">
+                    <label for="comment" class="black-text"> Create Comment: </label>
+                    <textarea id="comment" CLASS="white" name="comment" placeholder="Enter Your Comments Here" required></textarea>
+
+                <div><br>
+                </div>
+                    <button type="submit" class=" right btn waves-effect waves-light blue-grey accent-4 z-depth-4">Comment</button>
+                </div>
+            </form>
+        </div>
+    <div class="section row col s12">
+        <br><br><br>
+    </div>
+    </fieldset>
+    </div>
+</div>
+{% endblock content %}

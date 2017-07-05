@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} TEFA: Contact Us Confirmation{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Homepage/Contact_Us/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+<div class="section container ">
+    <br><br>
+    <div class="container">
+        <div class=" row col s10 offset-s1">
+            <br><br>
+            <p> {{ message }}</p>
+        </div>
+    </div>
+</div>
+    <br><br>
+    <br><br>
+{% endblock content %}

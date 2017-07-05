@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load ratings %}
+
+
+{% block title %} TEFA: Concours Courses{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Concours/Allcourses/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+<div class="section container ">
+    <div class=" black-text">
+        <h2> Concours Courses </h2>
+    </div>
+
+    <h4 class="center" id="Second_Science"> Science Courses</h4>
+    <div class="row">
+        {% for course in allscience %}
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedsciencecourse' course_id=course.id  %}" class="center black-text">
+                    <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                        <span class="card-title black-text "></span>
+                        </div> {% ratings course %}
+                        <div class="card-action">
+                            <h5>{{ course.coursename }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'Concours:sciencecourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+    <h4 class="center" id="Second_Arts"> Arts Courses </h4>
+    <div class="row">
+        {% for course in allarts %}
+        <div class="col s6 m4 l3">
+            <a href="{% url 'Concours:selectedartscourse' course_id=course.id %}" class="center black-text">
+                <div class="card center">
+                    <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                        <span class="card-title black-text "></span>
+                        </div> {% ratings course %}
+                        <div class="card-action">
+                            <h5>{{ course.coursename }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+    <a href="{% url 'Concours:artscourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+    <h4 class="center" id="Second_Commerce"> Commercial Courses </h4>
+    <div class="row">
+        {% for course in allcommercial %}
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedcommercialcourse' course_id=course.id %}" class="center black-text">
+                <div class="card center">
+                    <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                        <span class="card-title black-text "></span>
+                        </div> {% ratings course %}
+                        <div class="card-action">
+                            <h5>{{ course.coursename }}</h5>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'Concours:commercialcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+
+    <h4 class="center" id="Second_Commerce"> Engineering Courses </h4>
+    <div class="row">
+        {% for course in allengineer %}
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedengineeringcourse' course_id=course.id %}" class="center black-text">
+                <div class="card center">
+                    <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                        <span class="card-title black-text "></span>
+                        </div> {% ratings course %}
+                        <div class="card-action">
+                            <h5>{{ course.coursename }}</h5>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'Concours:engineeringcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+
+
+    <h4 class="center" id="Second_Commerce"> Medical Courses </h4>
+    <div class="row">
+        {% for course in allmedical %}
+            <div class="col s6 m4 l3">
+                <a href="{% url 'Concours:selectedmedicalcourse' course_id=course.id %}" class="center black-text">
+                <div class="card center">
+                    <div class="card center">
+                        <div class="card-image">
+                            <img src="{{ course.courselogo.url }}" class="responsive-img ">
+                        <span class="card-title black-text "></span>
+                        </div> {% ratings course %}
+                        <div class="card-action">
+                            <h5>{{ course.coursename }}</h5>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'Concours:medicalcourses' %}" class="right btn waves-effect waves-light blue-grey z-depth-4">See All</a>
+    <br>
+</div>
+{% endblock content %}

@@ -1,0 +1,30 @@
+
+fieldset{
+    padding: 20px;
+}
+fieldset legend{
+    margin: auto;
+    padding: 10px 10%;
+    border-radius: 5px;
+}
+span.name{
+    clear: left;
+}
+div.card-image img{
+    height: 100%;
+    width: 100%;
+}
+img.circle{
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+}
+div.center.z-depth-2{
+    margin: auto 20%;
+    padding: 5px;
+}
+div.col.s12.m6.l6{
+    padding: 5px;
+    margin: auto;
+}

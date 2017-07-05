@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load index %}
+
+{% block title %} TEFA: {{ Title }}{{ course.coursename }}: {{ Topic.topicname }} {% endblock title %}
+
+{% block style %}
+    <link href="{% static 'css/Course/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock style %}
+
+{% block content %}
+
+<div class="container">
+    {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="center {{ message.tags }} red-text" {% endif %}>{{ message }}</p>
+            {% endfor %}
+    {% endif %}
+    <h3 class="left"></h3>
+        <br>
+        <h4 class="center"><b><u>{{ course.coursename }} Chapter {{ Chapter.chapternumber }} : {{ Topic.topicname }}</u></b></h4>
+    <h4><u>Introduction</u></h4>
+    <p class="row "><b class="col offset-s1"></b> {{ Topic.topicintro }}</p><br>
+    <div class="right">
+             <a class="center" href="{{ Topic.topicdocument.url }}"><i class="fa fa-file-text"></i> <b><u>  PDF Document {{ Topic.topicname }}</u></b></a>
+        </div><br><br>
+<div class="section">
+    <div class="row">
+        <h5 class="center"><b><u>{{ Topic.topicname }} Video</u></b></h5>
+    <br>
+        <div class="icon-block">
+            <div class="col s12 m5 l4 left">
+                <h4>Course Outline</h4>
+                <ul class="collapsible center" data-collapsible="accordion">
+                 {% for chapter in chapters %}
+                      <li>
+                        <a class="collapsible-header black-text"><b> Chapter {{ chapter.chapternumber }}: {{ chapter.chaptertitle }}<i class="fa fa-angle-down right "></i></b></a>
+                            <div class="collapsible-body ">
+                              <ul>
+                                {% for topic in topics|index:forloop.counter0 %}
+                                    <li style="padding-bottom: 5px"><a href="{% url 'Concours:coursevideos' course_id=course.id chapter_id=chapter.id  topic_id=topic.id %}" class="grey-text text-darken-2"><b>{{ topic.topicname }}</b></a></li>
+                                {% endfor %}
+                                  <li><a href="{% url 'Concours:quiz' user_id=user.id course_id=course.id chapter_id=chapter.id %}" ><b> Quiz </b></a></li>
+                              </ul>
+                            </div>
+                      </li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="icon-block">
+            <div class="col s12 m7 l8">
+                <video id="main_video" class="video-js vjs-default-skin responsive-video col s12" controls  preload="auto" poster="{{ course.coursevideoposter.url }}" width="640" height="400" data-setup='{}' >
+                    <source src="{{ Topic.topicvideo.url }}" type='video/mp4' label='360' res='480' />
+                    <p class="vjs-no-js">Javascript is disabled or not supported</p>
+                </video>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+    <div class="center">
+        <a href="{% url 'Concours:forum' user_id=user.id course_id=course.id chapter_id=Chapter.id topic_id=Topic.id %}"><h5><u>Meet and share your ideas with Classmates On Our Forum</u></h5></a>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
+
