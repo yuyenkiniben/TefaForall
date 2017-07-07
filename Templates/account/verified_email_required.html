@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="container">
+        <h3>{% trans "Verify Your E-mail Address" %}</h3>
+
+        {% url 'account_email' as email_url %}
+
+        <p>{% blocktrans %}This part of the site requires us to verify that
+        you are who you claim to be. For this purpose, we require that you
+        verify ownership of your e-mail address. {% endblocktrans %}</p>
+
+        <p>{% blocktrans %}We have sent an e-mail to you for
+        verification. Please click on the link inside this e-mail. Please
+        contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+
+        <p>{% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}</p>
+        {% if user.is_authenticated %}
+        <p >Goto <a href="{% url 'homepg:homepage'%}" >Homepage</a></p>
+        {% else %}
+        <p >Goto <a href="{% url 'homepg:userprofile'%}" >Your Profile</a></p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

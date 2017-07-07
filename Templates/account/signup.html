@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load account socialaccount %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class=" container section ">
+    <div class="row">
+        <div class=" col s12 m10 l8 offset-m1 offset-l2">
+    <fieldset class="white z-depth-2 auth_all " >
+  <legend class="blue-grey lighten-1 white-text center"><h3><i class="fa fa-user-circle"></i> {% trans "Register" %}</h3> </legend>
+<!-- help for django allauth http://www.sarahhagstrom.com/2013/09/the-missing-django-allauth-tutorial/#Style_the_login_and_registration_templates -->
+{% get_providers as socialaccount_providers %}
+{% get_providers as socialaccount_providers %}
+
+  {% if socialaccount_providers %}
+  <p>{% blocktrans with site.name as site_name %}Please sign in with one
+  of your existing third party accounts. Or, sign up below:{% endblocktrans %}</p>
+
+  <div class="socialaccount_ballot">
+    <div class="row center">
+        <div class="col s12 m5 " style="padding-top: 10px">
+            <a href='{% provider_login_url "google" method="oauth" %}' class="btn red "> <i class="fa fa-google"></i> Google </a>
+        </div>
+
+        <div class="col s12 m5 " style="padding-top: 10px">
+            <a href='{% provider_login_url "facebook" method="oauth2" %}' class="btn blue darken-3"> <i class="fa fa-facebook"></i> Facebook </a>
+        </div>
+    </div>
+    <div class="login-or"></div>
+
+  </div>
+
+  {% include "socialaccount/snippets/login_extra.html" %}
+
+  {% else %}
+  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+  {% endif %}
+
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="btn waves-effect blue-grey lighten-1 right" type="submit">{% trans "Sign Up" %}</button>
+    </form>
+</fieldset>
+        </div>
+    </div>
+</div>
+{% endblock %}

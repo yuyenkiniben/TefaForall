@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load account socialaccount %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign Up Closed" %}{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="container">
+        <h3>{% trans "Sign Up Closed" %}</h3>
+
+        <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+        {% if user.is_authenticated %}
+        <p >Goto <a href="{% url 'homepg:homepage'%}" >Homepage</a></p>
+        {% else %}
+        <p >Goto <a href="{% url 'homepg:userprofile'%}" >Your Profile</a></p>
+        {% endif %}
+    </div>
+</div>
+    {% endblock %}

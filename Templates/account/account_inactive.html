@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load account socialaccount %}
+{% load i18n %}
+
+{% block title %}{% trans "Account Inactive" %}{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="container">
+        <h3>{% trans "Account Inactive" %}</h3>
+
+        <p>{% trans "This account is inactive." %}</p>
+    </div>
+</div>
+{% endblock %}

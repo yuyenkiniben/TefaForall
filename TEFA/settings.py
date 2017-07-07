@@ -214,3 +214,5 @@ EMAIL_PORT = 587
 
 #This did the trick
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

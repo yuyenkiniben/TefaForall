@@ -199,9 +199,9 @@
 </main>
 
 <footer class="page-footer  blue-grey darken-3 center">
-    <div class="container section">
-        <div class="row blue-grey darken-3">
-            <div class="col s6 m5 blue-grey darken-3">
+    <div class="container section blue-grey darken-3">
+        <div class="row">
+            <div class="col s6 m5">
                 <a href="{% url 'homepg:homepage' %}" class="grey-text brand-logo"><img
                         src="{% static 'Img/logo.png' %}" alt="TEFA logo" class="logo"/><h5>Targeted Education For
                     All </h5></a>
@@ -220,8 +220,8 @@
                        class="btn waves-effect waves-light blue-grey accent-4 z-depth-4 center">Register</a>
                 {% endif %}
             </div>
-            <div class="gfti col s6 m5 center-align blue-grey darken-3">
-                <h5 class="grey-text text-lighten-4 blue-grey darken-3">Follow Us</h5>
+            <div class="gfti col s6 m5 center-align">
+                <h5 class="grey-text text-lighten-4">Follow Us</h5>
                 <ul>
                     <li><a href="http://fb.me/afrikforall" target="_blank" class="grey-text"> <i
                             class="fa fa-facebook-official fa-3x"></i></a></li>
@@ -234,24 +234,24 @@
                 </ul>
             </div>
         </div>
-        <div class="row center blue-grey darken-3">
-        <div class="gfti col s12 blue-grey darken-3 ">
-            <ul class="blue-grey darken-3">
-                <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:homepage' %}"> Home </a></b>
-                </li>
-                <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:contactus' %}"> Contact
-                    Us </a></b></li>
-                <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:aboutus' %}"> About
-                    Us </a></b></li>
-                <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:privacy_policies' %}">
-                    Privacy & Policies</a></b></li>
-            </ul>
-        </div>
-        </div>
     </div>
+    <div class="row center blue-grey darken-3">
+    <div class="gfti col s12 blue-grey darken-3 ">
+        <ul>
+            <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:homepage' %}"> Home </a></b>
+            </li>
+            <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:contactus' %}"> Contact
+                Us </a></b></li>
+            <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:aboutus' %}"> About
+                Us </a></b></li>
+            <li><b> <a class="waves-effect waves-light grey-text" href="{% url 'homepg:privacy_policies' %}">
+                Privacy & Policies</a></b></li>
+        </ul>
+    </div>
+
     <div class="footer-copyright blue-grey darken-4">
-        <div class="blue-grey darken-4 blue-grey darken-4">
-            <p class=" center light grey-text blue-grey darken-4">&copy;2016 Targeted Education For All</p>
+        <div class="">
+            <p class=" center light grey-text">&copy;2016 Targeted Education For All</p>
         </div>
     </div>
 </footer>

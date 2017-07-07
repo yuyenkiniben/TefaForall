@@ -1,0 +1,33 @@
+{% load socialaccount %}
+
+{% get_providers as socialaccount_providers %}
+
+{% for provider in socialaccount_providers %}
+{% if provider.id == "openid" %}
+{% for brand in provider.get_brands %}
+<li>
+  <a title="{{brand.name}}"
+     class="socialaccount_provider {{provider.id}} {{brand.id}}"
+     href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
+     >{{brand.name}}</a>
+</li>
+{% endfor %}
+{% endif %}
+{% endfor %}
+<div class="container section socialaccount_ballot">
+    <div class=" container row ">
+        <div class="col s4 ">
+            <a href='{% provider_login_url "google" method="oauth" %}' class="btn red "> <i class="fa fa-google"></i> Google </a>
+        </div>
+
+        <div class="col s4 ">
+            <a href='{% provider_login_url "twitter" method="oauth" %}' class="btn blue lighten-1 "> <i class="fa fa-twitter"></i> Twitter </a>
+        </div>
+
+        <div class="col s4 ">
+            <a href='{% provider_login_url "facebook" method="oauth2" %}' class="btn blue darken-3"> <i class="fa fa-facebook"></i> Facebook </a>
+        </div>
+    </div>
+    <div class="login-or"></div>
+
+  </div>
